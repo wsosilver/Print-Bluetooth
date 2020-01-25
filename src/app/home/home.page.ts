@@ -1,12 +1,41 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Printer, PrintOptions } from '@ionic-native/printer/ngx';
+import { Platform } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage {
+export class HomePage implements OnInit {
 
-  constructor() {}
+  constructor(
+    private printer: Printer
+  ) {}
 
+  ngOnInit(){
+  }
+
+  testarImpressao(){
+    this.printer.isAvailable().then(() => {
+      this.fazerImpressao();
+    }, (error) => {
+      console.log('Erro:', error);
+    });
+  }
+
+  fazerImpressao(){
+    let conteudoDaImpressao = document.getElementById('teste').outerHTML;
+
+    this.printer.print(conteudoDaImpressao).then(
+      () => {
+        alert("printing done successfully !");
+      },
+      () => {
+        alert("Error while printing !");
+      }
+    ).catch((error) => {
+      console.log('Erro:', error);
+    });
+  }
 }
