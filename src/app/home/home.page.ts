@@ -16,26 +16,22 @@ export class HomePage implements OnInit {
   ngOnInit(){
   }
 
-  testarImpressao(){
+  testarImpressao01(){
     this.printer.isAvailable().then(() => {
-      this.fazerImpressao();
+      let conteudoDaImpressao = document.getElementById('teste').outerHTML;
+      this.printer.print(conteudoDaImpressao).then(
+        () => {
+          alert("printing done successfully !");
+        },
+        () => {
+          alert("Error while printing !");
+        }
+      ).catch((error) => {
+        console.log('Erro:', error);
+      });
     }, (error) => {
       console.log('Erro:', error);
     });
   }
 
-  fazerImpressao(){
-    let conteudoDaImpressao = document.getElementById('teste').outerHTML;
-
-    this.printer.print(conteudoDaImpressao).then(
-      () => {
-        alert("printing done successfully !");
-      },
-      () => {
-        alert("Error while printing !");
-      }
-    ).catch((error) => {
-      console.log('Erro:', error);
-    });
-  }
 }
