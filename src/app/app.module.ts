@@ -14,11 +14,14 @@ import { Printer } from '@ionic-native/printer/ngx';
 import { File } from '@ionic-native/file/ngx';
 import { FileOpener } from '@ionic-native/file-opener/ngx';
 import { BluetoothSerial } from '@ionic-native/bluetooth-serial/ngx';
+import { NgxQRCodeModule } from 'ngx-qrcode2';
+
+
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, NgxQRCodeModule],
   providers: [
     Printer,
     

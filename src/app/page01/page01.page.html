@@ -13,4 +13,14 @@
     <li><a href="https://ionicacademy.com/create-pdf-files-ionic-pdfmake/">Link 1</a></li>
     <li><a href="http://pdfmake.org/index.html#/gettingstarted">Link 2</a></li>    
   </ul>
+
+
+
+  <ion-card *ngIf="createdCode">
+    <ngx-qrcode qrc-element-type="canvas" [(qrc-value)]="createdCode"></ngx-qrcode>
+ 
+    <ion-card-content>
+     
+    </ion-card-content>
+  </ion-card>
 </ion-content>
